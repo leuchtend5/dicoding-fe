@@ -1,0 +1,29 @@
+@mixin flexbox($direction: row, $gap: 0px, $justify, $align) {
+  display: flex;
+  flex-direction: $direction;
+  gap: $gap;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin text($font-family, $text-align, $font-size) {
+  font-family: $font-family;
+  text-align: $text-align;
+  font-size: $font-size;
+}
+
+@mixin hover-effect {
+  transition: 0.1s ease-in-out;
+  transform: translateY(-5px);
+  box-shadow: 0px 2px 8px 2px rgba(0, 0, 0, 0.4);
+}
+
+@mixin animate($animation, $duration, $method, $times) {
+  animation: $animation $duration $method $times;
+}
+
+@mixin keyframes($name) {
+  @keyframes #{$name} {
+    @content;
+  }
+}

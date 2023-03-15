@@ -1,0 +1,10 @@
+@use 'mixin';
+@use 'variable' as var;
+
+footer {
+  background-color: #393e46;
+  font-family: content-font;
+  padding: 10px 0;
+  text-align: center;
+  margin-top: auto;
+}

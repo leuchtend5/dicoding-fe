@@ -1,0 +1,143 @@
+@use '../variable' as var;
+@use '../mixin';
+
+@media screen and (max-width: 960px) {
+  header {
+    padding: var.$padding-tablet;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    width: calc(100% - 30px);
+
+    nav {
+      & > ul {
+        display: none;
+      }
+    }
+
+    .search-btn-init,
+    .notif-btn,
+    .hamburger-icon {
+      text-align: right;
+    }
+
+    .hamburger-icon {
+      display: inline;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: 1.3rem;
+      width: 44px;
+      height: 44px;
+    }
+
+    .hamburger-menu {
+      display: block;
+      position: absolute;
+      right: 0;
+      top: 81px;
+      background-color: rgba($color: #393e46, $alpha: 0.45);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      width: 100%;
+      text-align: center;
+      padding-top: 15px;
+      z-index: 1;
+      opacity: 0;
+      transform: translateY(-10px);
+      visibility: hidden;
+      transition: 0.1s ease-in-out;
+
+      & > ul {
+        @include mixin.flexbox(column, 10px, center, center);
+      }
+
+      &.active {
+        height: 100vh;
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      a {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  main {
+    padding: var.$padding-tablet;
+    gap: 90px;
+
+    h2 {
+      font-size: 1.7rem;
+    }
+
+    .first-section {
+      margin: 0 -15px;
+
+      article {
+        padding: 0 15vw;
+
+        p {
+          font-size: 1.2rem;
+
+          &:nth-child(1) {
+            font-size: 1.9rem;
+          }
+        }
+      }
+    }
+
+    .second-section {
+      article {
+        gap: 15px;
+
+        .history-container {
+          flex-direction: column;
+          gap: 15px;
+
+          picture {
+            text-align: center;
+          }
+
+          p {
+            width: 100%;
+            font-size: 1.2rem;
+          }
+
+          img {
+            width: 80%;
+          }
+        }
+      }
+    }
+
+    .third-section {
+      gap: 15px;
+      margin-bottom: 90px;
+
+      .container {
+        width: inherit;
+        padding: 10px;
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: 43%;
+        grid-auto-rows: 100%;
+        overflow-x: scroll;
+        overscroll-behavior-inline: contain;
+        scrollbar-width: none;
+        gap: 15px;
+        justify-content: initial;
+      }
+
+      // TO HIDE SCROLLBAR IN RECOM LIST FOR CHROME, SAFARI, EDGE, OPERA
+      ::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    .resto-card-container {
+      margin-bottom: 90px;
+    }
+  }
+}

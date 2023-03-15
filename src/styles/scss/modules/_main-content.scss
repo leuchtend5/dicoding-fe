@@ -1,0 +1,157 @@
+@use 'mixin';
+@use 'variable' as var;
+
+main {
+  padding: var.$padding-laptop;
+  @include mixin.flexbox(column, 120px, center, center);
+
+  h2 {
+    @include mixin.text(title-font, center, 2.1rem);
+  }
+
+  .first-section {
+    height: 100vh;
+    background: linear-gradient(0deg, rgba(34, 40, 49, 1) 3%, rgba(0, 0, 0, 0.3) 20%);
+    position: relative;
+    margin: 0 -25px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      z-index: -10;
+      object-fit: cover;
+    }
+
+    article {
+      @include mixin.flexbox(column, 5px, center, center);
+      height: 100%;
+      padding: 0 25vw;
+
+      p {
+        @include mixin.text(content-font, center, 1.5rem);
+
+        &:nth-child(1) {
+          font-size: 2.5rem;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  .second-section {
+    article {
+      @include mixin.flexbox(column, 50px, center, center);
+
+      .history-container {
+        @include mixin.flexbox(row, 20px, center, center);
+
+        p {
+          @include mixin.text(content-font, justify, 1.2rem);
+          width: 100%;
+        }
+
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .third-section {
+    @include mixin.flexbox(column, 50px, center, center);
+    margin-bottom: 120px;
+
+    .see-all-btn {
+      background-color: transparent;
+      color: #eeeeee;
+      border: none;
+      border-radius: 10px;
+      padding: 0 10px;
+      font-size: 1.1rem;
+      min-width: 44px;
+      min-height: 44px;
+      cursor: pointer;
+    }
+
+    .see-all-btn:hover {
+      @include mixin.hover-effect;
+    }
+
+    .container {
+      @include mixin.flexbox(row, 10px, center, center);
+    }
+  }
+
+  resto-card {
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 6px;
+    position: relative;
+  }
+
+  resto-card:hover {
+    @include mixin.hover-effect;
+  }
+
+  .all-resto {
+    margin-top: var(--margin-top, 70px);
+    width: 100%;
+    font-family: content-font;
+
+    .filter {
+      padding: 0 10px;
+      margin-top: 50px;
+      margin-bottom: 30px;
+
+      #resto-cities {
+        color: black;
+        min-height: 44px;
+      }
+    }
+  }
+
+  .resto-card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 120px;
+  }
+
+  .search-result {
+    margin-top: var(--margin-top, 70px);
+    width: 100%;
+
+    .resto-card-container,
+    .search-error {
+      margin-top: 50px;
+    }
+
+    .search-error {
+      font-family: content-font;
+      font-size: 1.5rem;
+    }
+  }
+
+  .restaurant-detail-container {
+    width: 100%;
+  }
+
+  detail-component {
+    display: flex;
+    justify-content: center;
+  }
+
+  .favorite-resto {
+    margin-top: var(--margin-top, 70px);
+    width: 100%;
+
+    h2 {
+      margin-bottom: 50px;
+    }
+
+    .favorite-error {
+      @include mixin.text(content-font, center, 1.5rem);
+    }
+  }
+}

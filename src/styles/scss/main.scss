@@ -1,0 +1,95 @@
+@use 'modules/header';
+@use 'modules/main-content';
+@use 'modules/footer';
+@use 'modules/breakpoints/medium';
+@use 'modules/breakpoints/small';
+@use 'modules/mixin' as mixin;
+
+@font-face {
+  font-family: title-font;
+  src: url(../../public/fonts/Roboto-Regular.ttf);
+}
+
+@font-face {
+  font-family: content-font;
+  src: url(../../public/fonts/Roboto-Light.ttf);
+}
+
+@include mixin.keyframes(spin) {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  scroll-margin-top: var(--scroll-margin, 100px);
+  scroll-behavior: smooth;
+  color: #eeeeee;
+}
+
+body {
+  background-color: #222831;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background-color: green;
+  color: white;
+  padding: 8px;
+  z-index: 100;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 0px;
+}
+
+.blur-bg::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 100;
+}
+
+.blur-bg {
+  display: none;
+}
+
+.blur-bg.active {
+  display: flex;
+}
+
+.loading-indicator {
+  @include mixin.animate(spin, 1s, linear, infinite);
+  width: 40px;
+  height: 40px;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #222831;
+  border-radius: 100%;
+  margin: auto;
+  display: none;
+  z-index: 200;
+  position: fixed;
+  top: calc(50% - 25px);
+  left: calc(50% - 25px);
+}
+
+.loading-indicator.active {
+  display: flex;
+}
