@@ -58,9 +58,9 @@ window.addEventListener('hashchange', async () => {
   blurBg.classList.remove('active');
 });
 
-window.addEventListener('load', () => {
+window.addEventListener('load', async () => {
   app.renderPage();
-  swRegister();
+  await swRegister();
 });
 
 const newDate = new Date().getFullYear();

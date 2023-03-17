@@ -23,7 +23,6 @@ const assetsToCache = [
 
 self.addEventListener('install', (event) => {
   event.waitUntil(CacheHelper.cachingAppShell([...assetsToCache]));
-  console.log('oke');
 });
 
 self.addEventListener('activate', (event) => {

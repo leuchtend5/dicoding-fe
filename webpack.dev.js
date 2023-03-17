@@ -11,7 +11,7 @@ module.exports = merge(common, {
     open: true,
     hot: false,
     liveReload: true,
-    port: 9000,
+    port: 8080,
     client: {
       overlay: {
         errors: true,
